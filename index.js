@@ -1,6 +1,6 @@
 import { Pokemon as RenamePoke } from './classes.js';
 import mockedPokemons from './mockedPokemons.js';
-
+import { fillPokemonCard } from './seeder.js';
 const btn = document.querySelector('button');
 
 const pokemonsList = mockedPokemons.map((pokemon) => {
@@ -30,15 +30,17 @@ let btn2 = document.querySelector(".btn2");
     //     alert(input.value);
     // }
     btn2.addEventListener('click', function(event) {   // клик по кнопке
-        alert(input.value)
+        alert(`👉${input.value}👈`);
     });
     document.addEventListener('keydown', function(event) {  // нажатие enter
         if (event.code == 'Enter') {
-            alert(input.value)
+            alert(`👉${input.value}👈`);
         }
     });
 
 
-    // btn.addEventListener('click', (event) => {
-    //     let pokemonNew = pokemonsList
-    // });
+    btn.addEventListener('click', (event) => {
+       let randomlist = pokemonsList[Math.floor(Math.random() * 3)];
+      fillPokemonCard(randomlist);
+    });  
+    // Math.floor(Math.random() * 3)
